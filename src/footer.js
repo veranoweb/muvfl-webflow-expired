@@ -1,48 +1,3 @@
-var ageCookieName = "resp-agev-age-verification-passed";
-
-function ageSetCookie(e, o, t) {
-    var a = new Date;
-    a.setTime(a.getTime() + 60 * t * 60 * 1e3);
-    var i = "expires=" + a.toUTCString();
-    document.cookie = e + "=" + o + ";" + i + ";path=/"
-}
-
-function ageGetCookie(e) {
-    for (var o = e + "=", t = document.cookie.split(";"), a = 0; a < t.length; a++) {
-        for (var i = t[a];
-            " " == i.charAt(0);) i = i.substring(1);
-        if (0 == i.indexOf(o)) return i.substring(o.length, i.length)
-    }
-    return ""
-}
-
-function ragevAgeVerificationHide() {
-    document.getElementById("age-verification").style.display = "none", document.body.classList.add("chat-visible")
-}
-
-function ragevAgeVerificationShow() {
-    document.getElementById("age-verification").style.display = "flex"
-}
-
-function ragevAgeVerificationLoad() {
-    try {
-        var e = ageGetCookie(ageCookieName),
-            o = window.location.href.indexOf("preview_age_verification") > -1;
-        if ("" != e && !o) return void ragevAgeVerificationHide();
-        ragevAgeVerificationShow()
-    } catch (e) {
-        ragevAgeVerificationShow()
-    }
-}
-
-function ragevAgeVerificationConfirm() {
-    ageSetCookie(ageCookieName, "verified", 8760), ragevAgeVerificationHide()
-}
-
-function ragevAgeVerificationFailed() {
-    window.history.back(), null != window.parent && setTimeout(window.close, 150)
-}
-
 function playcategoryPageProductSlider() {
     categoryPageProductSlider.trigger("play.owl.autoplay", [1e3])
 }
@@ -74,11 +29,7 @@ function playpatiendQuoteOwl() {
 function stoppatiendQuoteOwl() {
     patiendQuoteOwl.trigger("stop.owl.autoplay")
 }
-ragevAgeVerificationLoad(), document.getElementsByClassName("age-yes")[0].onclick = function() {
-    ragevAgeVerificationConfirm()
-}, document.getElementsByClassName("age-no")[0].onclick = function() {
-    ragevAgeVerificationFailed()
-}, $(document).ready(function() {
+$(document).ready(function() {
     setTimeout(function() {
         $("body").hasClass("shop-page") && window.scrollTo(0, 0)
     }, 4e3), $(".menu-button.w-nav-button").on("click", function() {
