@@ -59,7 +59,7 @@ $(document).ready(function() {
         }
     });
     let e = homeHeroOwl.find(".owl-dots").width();
-    homeHeroOwl.append(`<div aria-label="slider play button" style="cursor: pointer; position: absolute;bottom: 14px;left: calc(50% + ${e/2+15}px);transform: translate(-50%, 0px);\n\t\twidth: 15px;" class="btn play-btn" onclick="togglehomeHeroOwl()">\n\t\t<img src="https://global-uploads.webflow.com/5ea4822fd3a80f6c9cc4fdd9/5f9d3a221df8367903ec4c4a_pause-grey.svg">\n      </div>`), productCarOwl = $("#product-cat-owl"), productCarOwl.owlCarousel({
+    homeHeroOwl.append(`<div tabindex="0" aria-label="slider play button" style="cursor: pointer; position: absolute;bottom: 14px;left: calc(50% + ${e/2+15}px);transform: translate(-50%, 0px);\n\t\twidth: 15px;" class="btn play-btn" onkeypress="togglehomeHeroOwl()" onclick="togglehomeHeroOwl()">\n\t\t<img src="https://global-uploads.webflow.com/5ea4822fd3a80f6c9cc4fdd9/5f9d3a221df8367903ec4c4a_pause-grey.svg">\n      </div>`), productCarOwl = $("#product-cat-owl"), productCarOwl.owlCarousel({
         center: !0,
         items: 2,
         loop: !0,
