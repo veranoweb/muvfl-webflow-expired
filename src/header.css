@@ -923,10 +923,6 @@ body.chat-visible .medchat-widget {
     opacity: 1
 }
 
-#age-verification {
-    display: block
-}
-
 .nav-submenu-items {
     white-space: nowrap
 }
@@ -1031,27 +1027,8 @@ div#age-verification {
     }
 }
 
-.age-verification-main .age-button {
-    margin: 0 15px;
-    background-color: #f60 !important;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#f70), to(#f60)) !important;
-    background-image: linear-gradient(180deg, #f70, #f60) !important;
-    color: #fff;
-    border: 0;
-    width: 100px
-}
-
-.age-verification-main .age-button:hover {
-    background-color: #f60 !important;
-    background-image: none !important;
-    color: #fff
-}
 
 @media only screen and (max-width:768px) {
-    .age-verification-main .age-button {
-        margin: 0 10px;
-        padding: 5px 20px
-    }
     #category-page-product-slider .owl-nav {
         top: 40%
     }

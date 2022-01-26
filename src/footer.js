@@ -59,7 +59,7 @@ $(document).ready(function() {
         }
     });
     let e = homeHeroOwl.find(".owl-dots").width();
-    homeHeroOwl.append(`<div tabindex="0" aria-label="slider play button" style="cursor: pointer; position: absolute;bottom: 14px;left: calc(50% + ${e/2+15}px);transform: translate(-50%, 0px);\n\t\twidth: 15px;" class="btn play-btn" onkeypress="togglehomeHeroOwl()" onclick="togglehomeHeroOwl()">\n\t\t<img src="https://global-uploads.webflow.com/5ea4822fd3a80f6c9cc4fdd9/5f9d3a221df8367903ec4c4a_pause-grey.svg">\n      </div>`), productCarOwl = $("#product-cat-owl"), productCarOwl.owlCarousel({
+    homeHeroOwl.append(`<div tabindex="0" aria-label="slider play button" style="cursor: pointer; position: absolute;bottom: 14px;left: calc(50% + ${e/2+15}px);transform: translate(-50%, 0px);\n\t\twidth: 17px;" class="btn play-btn" id="homeheroplaypause" onclick="togglehomeHeroOwl()">\n\t\t<img src="https://uploads-ssl.webflow.com/61d782c886371c541f58c332/61f0f1f8b3308a00663eb484_pause-button.png">\n      </div>`), productCarOwl = $("#product-cat-owl"), productCarOwl.owlCarousel({
         center: !0,
         items: 2,
         loop: !0,
@@ -273,8 +273,28 @@ $(document).ready(function() {
 let count = 0;
 
 function togglehomeHeroOwl() {
-    0 == count ? (homeHeroOwl.trigger("stop.owl.autoplay"), count++) : (homeHeroOwl.trigger("play.owl.autoplay", [4e3]), count = 0)
+    if(0 == count){
+        homeHeroOwl.trigger("stop.owl.autoplay"), count++;
+        $("#homeheroplaypause img").attr('src', 'https://uploads-ssl.webflow.com/61d782c886371c541f58c332/61f0f1fe82e5f082ebeda488_play-button.png');
+    }else{
+        homeHeroOwl.trigger("play.owl.autoplay", [4e3]), count = 0;
+        $("#homeheroplaypause img").attr('src', 'https://uploads-ssl.webflow.com/61d782c886371c541f58c332/61f0f1f8b3308a00663eb484_pause-button.png');
+    }
 }
+window.onload = (event) => {
+    $('#homeheroplaypause').focus(function() {
+        console.log('focus on home hero play pause');
+        $(document.documentElement).keyup(function (event) {
+            if ( (event.keyCode || event.which) === 13) {
+                // Cancel the default action, if needed
+                event.preventDefault();
+                //call function, trigger events and everything tou want to dd . ex : Trigger the button element with a click
+                $("#homeheroplaypause").trigger('click');
+            }
+        });
+    });
+};
+
 if ($("body").on("click", ".storepoint-gallery-link a", function(e) {
         var o = $(this).attr("data-gallery");
         o = (o = o.replace(/“/g, "")).replace(/”/g, ""), $(".map-id").each(function() {
