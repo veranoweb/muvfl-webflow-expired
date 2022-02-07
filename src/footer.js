@@ -32,11 +32,22 @@ function stoppatiendQuoteOwl() {
 $(document).ready(function() {
     setTimeout(function() {
         $("body").hasClass("shop-page") && window.scrollTo(0, 0)
-    }, 4e3), $(".menu-button.w-nav-button").on("click", function() {
-        $("body").toggleClass("fixedPosition"), $(".menu-button.w-nav-button").hasClass("w--open") ? $("body").removeClass("fixedPosition") : $("body").addClass("fixedPosition")
-    }), $(".w-nav-overlay").click(function() {
+    }, 4e3);
+    $(".menu-button.w-nav-button").on("click", function() {
+        $("body").toggleClass("fixedPosition");
+        $(".menu-button.w-nav-button").hasClass("w--open") ? $("body").removeClass("fixedPosition") : $("body").addClass("fixedPosition");
+    });
+    $(".menu-button.w-nav-button").on("keyup", function() {
+        $("body").toggleClass("fixedPosition");
+        $(".menu-button.w-nav-button").hasClass("w--open") ? $("body").removeClass("fixedPosition") : $("body").addClass("fixedPosition");
+    });
+    $(".w-nav-overlay").on('click',function() {
         $(".menu-button.w-nav-button").hasClass("w--open") && $("body").removeClass("fixedPosition")
-    }), homeHeroOwl = $("#Home-Hero-Slider"), homeHeroOwl.owlCarousel({
+    });
+    $(".w-nav-overlay").on('keyup',function() {
+        $(".menu-button.w-nav-button").hasClass("w--open") && $("body").removeClass("fixedPosition")
+    });
+    homeHeroOwl = $("#Home-Hero-Slider"), homeHeroOwl.owlCarousel({
         items: 1,
         autoplay: !0,
         autoplayTimeout: 5e3,
@@ -81,7 +92,7 @@ $(document).ready(function() {
                 nav: !1
             }
         }
-    }), productCarOwl.append('<div class="owl-play-pause"><button aria-label="slider play button" class="btn play-btn" onclick="playproductCarOwl()">Play</button><button aria-label="slider stop button" class="btn pause-btn" onclick="stopproductCarOwl()">Pause</button></div>'), $("#product-cat-owl").on("translated.owl.carousel", function(e) {
+    }), productCarOwl.append('<div class="owl-play-pause"><button aria-label="slider play button" class="btn play-btn" onclick="playproductCarOwl()" onkeyup="playproductCarOwl()">Play</button><button aria-label="slider stop button" class="btn pause-btn" onclick="stopproductCarOwl()" onkeyup="stopproductCarOwl()">Pause</button></div>'), $("#product-cat-owl").on("translated.owl.carousel", function(e) {
         var o = $("#product-cat-owl").find(".owl-item.center .product-cat-slider-item").attr("data-position");
         $("#Product-Cat-Icons-slider-home .owl-item").each(function() {
             var e = $(this).find(".product-cat-icon-2").attr("data-order");
@@ -105,7 +116,7 @@ $(document).ready(function() {
                 items: 3
             }
         }
-    }), patiendQuoteOwl.append('<div class="owl-play-pause"><button aria-label="slider play button" class="btn play-btn" onclick="playpatiendQuoteOwl()">Play</button><button aria-label="slider stop button" class="btn pause-btn" onclick="stoppatiendQuoteOwl()">Pause</button></div>'), owlAboutLogo = $("#owl-about-logo"), owlAboutLogo.owlCarousel({
+    }), patiendQuoteOwl.append('<div class="owl-play-pause"><button aria-label="slider play button" class="btn play-btn" onclick="playpatiendQuoteOwl()" onkeyup="playpatiendQuoteOwl()">Play</button><button aria-label="slider stop button" class="btn pause-btn" onclick="stoppatiendQuoteOwl()" onkeyup="stoppatiendQuoteOwl()">Pause</button></div>'), owlAboutLogo = $("#owl-about-logo"), owlAboutLogo.owlCarousel({
         center: !0,
         loop: !0,
         items: 1,
@@ -117,7 +128,7 @@ $(document).ready(function() {
                 items: 1
             }
         }
-    }), owlAboutLogo.append('<div class="owl-play-pause"><button aria-label="slider play button" class="btn play-btn" onclick="playowlAboutLogo()">Play</button><button aria-label="slider stop button" class="btn pause-btn" onclick="stopowlAboutLogo()">Pause</button></div>'), $("#Product-Cat-Icons-slider").owlCarousel({
+    }), owlAboutLogo.append('<div class="owl-play-pause"><button aria-label="slider play button" class="btn play-btn" onclick="playowlAboutLogo()" onkeyup="playowlAboutLogo()">Play</button><button aria-label="slider stop button" class="btn pause-btn" onclick="stopowlAboutLogo()" onkeyup="stopowlAboutLogo()">Pause</button></div>'), $("#Product-Cat-Icons-slider").owlCarousel({
         loop: !1,
         items: 1,
         nav: !1,
@@ -171,9 +182,14 @@ $(document).ready(function() {
                 items: 9
             }
         }
-    }), $(document).on("click", "#Product-Cat-Icons-slider-home .owl-item > a", function() {
+    });
+    $(document).on("click", "#Product-Cat-Icons-slider-home .owl-item > a", function() {
         $("#product-cat-owl").trigger("to.owl.carousel", [$(this).data("position"), 300])
-    }), $("#Product-Cat-Icons-slider-2").owlCarousel({
+    });
+    $(document).on("keyup", "#Product-Cat-Icons-slider-home .owl-item > a", function() {
+        $("#product-cat-owl").trigger("to.owl.carousel", [$(this).data("position"), 300])
+    });
+    $("#Product-Cat-Icons-slider-2").owlCarousel({
         loop: !1,
         items: 1,
         nav: !1,
@@ -216,7 +232,7 @@ $(document).ready(function() {
                 items: 7
             }
         }
-    }), categoryPageProductSlider.append('<div class="owl-play-pause"><button aria-label="slider play button" class="btn play-btn" onclick="playcategoryPageProductSlider()">Play</button><button aria-label="slider stop button" class="btn pause-btn" onclick="stopcategoryPageProductSlider()">Pause</button></div>'), $(".dispensaries-item-footer").each(function() {
+    }), categoryPageProductSlider.append('<div class="owl-play-pause"><button aria-label="slider play button" class="btn play-btn" onclick="playcategoryPageProductSlider()" onkeyup="playcategoryPageProductSlider()">Play</button><button aria-label="slider stop button" class="btn pause-btn" onclick="stopcategoryPageProductSlider()" onkeyup="stopcategoryPageProductSlider()">Pause</button></div>'), $(".dispensaries-item-footer").each(function() {
         $(this).find(".lightbox-image").each(function(e) {
             var o = $(this).attr("src");
             0 == e ? $(this).wrap('<a class="dispensaries-list-item-link lightbox-link primary-link" href="' + o + '">View Photos</a>') : $(this).wrap('<a class="lightbox-link secondary-link" href="' + o + '">Secondary Links</a>')
@@ -240,7 +256,11 @@ $(document).ready(function() {
     }), $("#wf-form-Location-Dropdown .w-select").change(function() {
         var e = $(this).children("option:selected").val();
         window.location = e
-    }), $("#subscribe-submit").click(function(e) {
+    });
+    $("#subscribe-submit").on('click',function(e) {
+        e.preventDefault()
+    });
+    $("#subscribe-submit").on('keyup',function(e) {
         e.preventDefault()
     });
     var t = $(".expiration_date").text();
@@ -265,7 +285,12 @@ $(document).ready(function() {
             controls: !1,
             touchEnabled: !1,
             pager: !1
-        }), $(".footer-social-list li").click(function(e) {
+        });
+        $(".footer-social-list li").on('click',function(e) {
+            var o = $(this).data("src");
+            console.log(o), window.open(o, "_blank").focus()
+        })
+        $(".footer-social-list li").on('keyup',function(e) {
             var o = $(this).data("src");
             console.log(o), window.open(o, "_blank").focus()
         })
@@ -283,7 +308,6 @@ function togglehomeHeroOwl() {
 }
 window.onload = (event) => {
     $('#homeheroplaypause').focus(function() {
-        console.log('focus on home hero play pause');
         $(document.documentElement).keyup(function (event) {
             if ( (event.keyCode || event.which) === 13) {
                 // Cancel the default action, if needed
@@ -300,9 +324,16 @@ if ($("body").on("click", ".storepoint-gallery-link a", function(e) {
         o = (o = o.replace(/“/g, "")).replace(/”/g, ""), $(".map-id").each(function() {
             $(this).html() == o && $(this).parent().find(".primary-link").trigger("click")
         })
-    }), $("#nav-icon3").click(function() {
+    }), $("body").on("keyup", ".storepoint-gallery-link a", function(e) {
+        var o = $(this).attr("data-gallery");
+        o = (o = o.replace(/“/g, "")).replace(/”/g, ""), $(".map-id").each(function() {
+            $(this).html() == o && $(this).parent().find(".primary-link").trigger("click")
+        })
+    }), $("#nav-icon3").on('click',function() {
         $(this).toggleClass("open")
-    }), $(".blog-list-title").text(function(e, o) {
+    }), $("#nav-icon3").on('keyup',function() {
+        $(this).toggleClass("open")
+    }),$(".blog-list-title").text(function(e, o) {
         if (o.length > 22) {
             var t = o.split(" ", 4);
             return t.push("..."), t.join(" ")
